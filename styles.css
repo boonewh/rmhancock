@@ -22,3 +22,10 @@
   outline:1px solid rgba(13,41,40,.08);
   outline-offset:-1px;
 }
+
+.hero-primary{
+  min-height:56px;
+  padding:14px 20px;
+  border-radius:10px;
+  font-size:15px;
+}
