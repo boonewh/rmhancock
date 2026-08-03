@@ -31,7 +31,7 @@
 }
 
 /* Full-page palette options controlled by the ui.sh picker. */
-body:has([data-uidotsh-option="Gulf Current"]:not([hidden])){
+body:has([data-uidotsh-option="Gulf Current (current)"]:not([hidden])){
   --ink:#12355b;
   --ink-dark:#102a38;
   --cream:#eaf6f7;
@@ -94,6 +94,27 @@ body:has([data-uidotsh-option="Regatta"]:not([hidden])){
   --marilyn-shape-two:#1464d2;
 }
 
+body:has([data-uidotsh-option="Violet Sail"]:not([hidden])){
+  --ink:#2b2553;
+  --ink-dark:#19152f;
+  --cream:#f1eeff;
+  --paper:#fcfbff;
+  --sea:#7c53f9;
+  --sea-soft:#ece6ff;
+  --sand:#ffd166;
+  --bright:#35bac7;
+  --coral:#ff7a72;
+  --copy:#56516f;
+  --muted:#706b7e;
+  --line:rgba(43,37,83,.14);
+  --roger-frame:#eae5ff;
+  --roger-shape-one:#35bac7;
+  --roger-shape-two:#ffd166;
+  --marilyn-frame:#f1edff;
+  --marilyn-shape-one:#ff7a72;
+  --marilyn-shape-two:#7c53f9;
+}
+
 .hero-lede,
 .intro-copy,
 .section-heading>p:last-child,
@@ -113,9 +134,119 @@ footer{
   border-color:var(--bright) transparent transparent transparent;
 }
 
+/* Calm, code-native hero motion: no video payload or licensing dependency. */
+.boat-motion{
+  position:absolute;
+  inset:0;
+  animation:boat-drift 8s ease-in-out infinite;
+  will-change:transform;
+}
+.boat-motion .sail-one{
+  transform-origin:50% 100%;
+  animation:sail-breathe-left 6s ease-in-out infinite;
+}
+.boat-motion .sail-two{
+  transform-origin:0 100%;
+  animation:sail-breathe-right 6s ease-in-out infinite;
+}
+.sun{
+  animation:sun-breathe 9s ease-in-out infinite;
+  will-change:transform,opacity;
+}
+.water-line{overflow:visible}
+.water-line:after{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:-34%;
+  width:30%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--bright),transparent);
+  opacity:.55;
+  animation:water-glint 8s ease-in-out infinite;
+  will-change:transform;
+}
+
+@keyframes boat-drift{
+  0%,100%{transform:translate3d(-5px,2px,0) rotate(-.25deg)}
+  50%{transform:translate3d(8px,-7px,0) rotate(.35deg)}
+}
+@keyframes sail-breathe-left{
+  0%,100%{transform:skewX(0)}
+  50%{transform:skewX(-1.2deg)}
+}
+@keyframes sail-breathe-right{
+  0%,100%{transform:skewX(0)}
+  50%{transform:skewX(1.5deg)}
+}
+@keyframes sun-breathe{
+  0%,100%{transform:scale(.98);opacity:.72}
+  50%{transform:scale(1.04);opacity:.84}
+}
+@keyframes water-glint{
+  0%{transform:translateX(0);opacity:0}
+  18%{opacity:.55}
+  82%{opacity:.55}
+  100%{transform:translateX(450%);opacity:0}
+}
+
 .portrait-roger{background:var(--roger-frame)}
 .portrait-roger:before{background:var(--roger-shape-one)}
 .portrait-roger:after{background:var(--roger-shape-two)}
 .portrait-marilyn{background:var(--marilyn-frame)}
 .portrait-marilyn:before{background:var(--marilyn-shape-one)}
 .portrait-marilyn:after{background:var(--marilyn-shape-two)}
+
+.brand-logo{flex:none;width:280px}
+.brand-logo img{display:block;width:100%;height:auto}
+.footer-brand.brand-logo{width:180px}
+
+.profile-tagline{
+  font-family:var(--serif);
+  font-size:25px!important;
+  color:var(--ink)!important;
+  line-height:1.2;
+}
+.hero-horizon h1{font-size:clamp(50px,5.8vw,82px);max-width:14ch}
+.hero-editorial h1{font-size:clamp(62px,8vw,116px);max-width:14ch}
+.specialty-label{
+  margin-top:26px!important;
+  color:var(--ink)!important;
+  font-size:14px!important;
+  font-weight:600;
+}
+.specialty-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px 22px;
+  margin:12px 0 28px;
+  padding:0;
+  list-style:none;
+  color:var(--copy);
+  font-size:14px;
+}
+.specialty-list li{position:relative;padding-left:14px}
+.specialty-list li:before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--bright)}
+
+@media(max-width:900px){
+  .brand-logo{width:245px}
+}
+
+@media(max-width:620px){
+  .brand-logo{width:215px}
+  .specialty-list{grid-template-columns:1fr;font-size:16px}
+  .profile-tagline{font-size:24px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .boat-motion,
+  .boat-motion .sail-one,
+  .boat-motion .sail-two,
+  .sun,
+  .water-line:after{
+    animation:none;
+    transform:none;
+  }
+  .sun{opacity:.78}
+  .water-line:after{display:none}
+}
