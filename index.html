@@ -13,10 +13,7 @@
 <body>
   <div class="site-shell" id="top">
     <div class="contents palette-picker" data-uidotsh-pick="Color palette">
-      <span class="contents theme-marker" data-uidotsh-option="Gulf Current (current)" aria-hidden="true"></span>
-      <span class="contents theme-marker" data-uidotsh-option="Harbor Bright" aria-hidden="true" hidden></span>
-      <span class="contents theme-marker" data-uidotsh-option="Regatta" aria-hidden="true" hidden></span>
-      <span class="contents theme-marker" data-uidotsh-option="Violet Sail" aria-hidden="true" hidden></span>
+      <span class="contents theme-marker" data-uidotsh-option="Violet Sail" aria-hidden="true"></span>
     </div>
     <header class="header">
       <a class="brand brand-logo" href="#top" aria-label="Homepage"><img src="images/logo.png" alt="R&amp;M Counseling"></a>
@@ -39,11 +36,25 @@
             <p class="hero-lede">Specialized online counseling for teens, young adults, and adults throughout Texas—grounded in understanding, confidence, and the freedom to grow into who you are.</p>
             <div class="hero-actions"><a class="button primary hero-primary" href="#contact">Request a consultation</a></div>
           </div>
-          <div class="hero-art" aria-hidden="true">
-            <div class="sun"></div>
-            <div class="boat-motion"><div class="sail sail-one"></div><div class="sail sail-two"></div></div>
-            <div class="water-line"></div>
-            <p>When the wind changes,<br><em>we must adjust our sails.</em></p>
+          <div class="hero-art hero-animation" aria-hidden="true">
+            <div class="sailboat-scene">
+              <span class="wind wind-one"></span>
+              <span class="wind wind-two"></span>
+              <span class="wind wind-three"></span>
+              <svg class="sailboat" viewBox="-8 -4 72 92" role="presentation">
+                <g class="sailboat-rig">
+                  <path class="sail-main" d="M1.44 34.79c3.51 2.2 7.01 4.39 10.68 6.69.46-1.48.84-2.73 1.23-3.98 1.82.9 3.54 1.88 5.36 2.6 1.58.62 3.26 1.01 4.93 1.36.63.13 1.39-.05 2.01-.28.41-.15.69-.65.95-1.09-4.43.13-8.28-1.48-12.09-3.25-.41-.19-1.01-.22-.75-.99.04-.11-.41-.43-.67-.61-2.81-1.95-5.63-3.89-8.45-5.84.05-.07.1-.14.14-.21 3.06 1.83 6.11 3.65 9.33 5.58 3.32-11.31 6.58-22.4 9.83-33.48.06 0 .12-.01.18-.01.32 1.48.65 2.96.97 4.45 2.56 12.1 5.12 24.21 7.67 36.31.32 1.51.64 3.03.93 4.55.04.22.01.56-.13.68-1.35 1.19-2.83 1.86-4.74 1.77-4.93-.24-9.31-2.21-13.71-4.16-.54-.24-1.04-.6-1.6-.76-1.43-.4-2.06-1.77-3.19-2.55-3.07-2.1-6.02-4.38-9.02-6.58-.05-.07 0-.13.04-.19Z"></path>
+                  <path class="sail-secondary" d="M.07 44.63c2.41 1.59 4.78 3.25 7.23 4.76 5.99 3.69 12.26 6.8 19.06 8.72 2.48.7 4.99 1.21 7.59 1.12.59-.02 1.17-.1 1.76-.15.03 1.19-.76 2.31-2.17 2.46-1.58.18-3.22.16-4.79-.1-3.17-.53-6.11-1.82-8.96-3.26-.75-.38-1.22-.27-1.85.18-4.13 2.96-8.28 5.89-12.42 8.83-.29.21-.59.39-1.09.73.55-1.91 1.03-3.6 1.52-5.29.96-3.28 1.92-6.57 2.93-9.83.21-.69.06-1.03-.5-1.46-2.55-1.93-5.06-3.92-7.58-5.89-.28-.22-.54-.49-.8-.73.02-.04.05-.07.07-.09Z"></path>
+                  <path class="sail-detail" d="M28.06 51.19c-1.7 1.21-3.25 2.33-4.82 3.41-.22.15-.65.21-.89.1-3.95-1.78-7.89-3.59-11.81-5.44-.22-.11-.43-.64-.37-.91.33-1.33.76-2.65 1.18-4.06 5.21 3.12 10.37 6.22 16.71 6.9Z"></path>
+                </g>
+                <g class="sailboat-hull">
+                  <path d="M4.93 68.97c17.15-.5 34.3-1 51.45-1.49.01.07.02.14.03.21-2.52.8-5.04 1.61-7.57 2.4-10.26 3.22-20.52 6.43-30.77 9.67-.7.22-1.17.19-1.75-.33-3.65-3.3-7.34-6.56-11.03-9.82-.17-.15-.4-.23-.6-.34.09-.1.16-.2.24-.3Z"></path>
+                </g>
+              </svg>
+              <div class="water" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
           </div>
         </section>
         <section class="hero hero-editorial" data-uidotsh-option="Quiet Editorial" hidden>
@@ -115,6 +126,8 @@
     <footer><a class="brand footer-brand brand-logo" href="#top" aria-label="Homepage"><img src="images/logo.png" alt="R&amp;M Counseling"></a><p>Online counseling for clients across Texas.</p><p>© <span id="year"></span> R&amp;M Counseling.</p></footer>
   </div>
   <script src="script.js"></script>
+  <!-- Picker UI temporarily disabled. Restore this script to bring the picker bar back.
   <script src="https://ui.sh/ui-picker.js"></script>
+  -->
 </body>
 </html>

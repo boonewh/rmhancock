@@ -4,13 +4,13 @@
 @media(max-width:620px){body{font-size:16px}.header{padding:0 20px}.brand-mark{width:40px;height:40px}.hero{padding:48px 20px 72px}.hero-horizon{min-height:auto}.hero-lede,.intro-copy,.editorial-bottom p{font-size:17px}.hero-actions{align-items:flex-start;flex-direction:column;gap:20px}.hero-art{min-height:390px}.hero-editorial h1{font-size:64px}.editorial-bottom{align-items:flex-start;flex-direction:column}.trust-strip{grid-template-columns:1fr;margin:0 20px;padding:0}.trust-strip p{padding:20px 0;border-left:0;border-top:1px solid var(--line)}.trust-strip p:first-child{border-top:0;padding-top:20px}.section{padding:78px 20px}.intro{gap:32px}.profile-list{margin-top:52px}.profile h3{font-size:44px}.service-grid{grid-template-columns:1fr}.services{padding-left:20px;padding-right:20px}.quote-section{padding:96px 20px}.contact{gap:40px}.contact .button{width:100%}footer{margin:0 20px;padding:36px 0;align-items:flex-start;flex-direction:column}.footer-brand{display:flex}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-/* Counselor portraits retain the original abstract fields as decorative frames. */
+/* Keep counselor photography direct and unframed. */
 .portrait{
-  --frame-padding:clamp(18px,2.4vw,34px);
-  --frame-radius:min(1vw,12px);
-  padding:var(--frame-padding);
-  border-radius:var(--frame-radius);
+  padding:0;
+  background:transparent;
+  border-radius:min(1vw,12px);
 }
+.portrait:before,.portrait:after{display:none}
 .portrait img{
   position:relative;
   z-index:1;
@@ -18,9 +18,8 @@
   height:100%;
   object-fit:cover;
   object-position:center top;
-  border-radius:calc(var(--frame-radius) - 4px);
-  outline:1px solid rgba(13,41,40,.08);
-  outline-offset:-1px;
+  border-radius:min(1vw,12px);
+  outline:0;
 }
 
 .hero-primary{
@@ -196,6 +195,40 @@ footer{
 .portrait-marilyn{background:var(--marilyn-frame)}
 .portrait-marilyn:before{background:var(--marilyn-shape-one)}
 .portrait-marilyn:after{background:var(--marilyn-shape-two)}
+.portrait.portrait-roger,.portrait.portrait-marilyn{background:transparent}
+
+/* Restrained Violet Sail accents across shared page structures. */
+.trust-strip{
+  padding-left:24px;
+  padding-right:24px;
+  border-color:rgba(124,83,249,.22);
+  border-radius:min(1vw,12px);
+  background:linear-gradient(105deg,rgba(236,230,255,.78),rgba(241,238,255,.42));
+}
+.intro h2:after{
+  content:"";
+  display:block;
+  width:72px;
+  height:4px;
+  margin-top:28px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--sea),var(--bright));
+}
+.service-grid dt{position:relative;padding-left:20px}
+.service-grid dt:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.44em;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--sea);
+}
+.service-grid div:nth-child(2) dt:before{background:var(--bright)}
+.service-grid div:nth-child(3) dt:before{background:var(--coral)}
+.service-grid div:nth-child(4) dt:before{background:var(--sand)}
+.contact .secondary{background:var(--sea-soft);border-color:rgba(124,83,249,.18)}
 
 .brand-logo{flex:none;width:280px}
 .brand-logo img{display:block;width:100%;height:auto}
@@ -209,6 +242,87 @@ footer{
 }
 .hero-horizon h1{font-size:clamp(50px,5.8vw,82px);max-width:14ch}
 .hero-editorial h1{font-size:clamp(62px,8vw,116px);max-width:14ch}
+.hero-horizon{
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:#f6f4fc;
+  border-radius:min(1vw,12px);
+}
+.hero-horizon .hero-copy{
+  position:relative;
+  z-index:2;
+  width:min(61%,720px);
+}
+.hero-horizon .hero-lede{color:var(--ink-dark)}
+.hero-animation{
+  position:absolute;
+  inset:0;
+  min-height:0;
+  overflow:hidden;
+  border-radius:0;
+  background:transparent;
+}
+.hero-animation:before{display:none}
+.hero-animation:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(246,244,252,.8) 0%,rgba(246,244,252,.62) 28%,rgba(246,244,252,.24) 52%,rgba(246,244,252,0) 76%);
+}
+.sailboat-scene{
+  position:absolute;
+  top:50%;
+  right:0;
+  width:min(72%,780px);
+  aspect-ratio:1 / 1.12;
+  transform:translateY(-48%);
+  animation:scene-drift 6.5s ease-in-out infinite;
+}
+.sailboat-scene:before{
+  content:"";
+  position:absolute;
+  inset:8% -8% 0;
+  border-radius:50%;
+  background:radial-gradient(closest-side,rgba(108,76,241,.17),transparent 72%);
+  filter:blur(10px);
+}
+.sailboat{position:relative;width:100%;height:100%;overflow:visible}
+.sailboat-rig{transform-box:fill-box;transform-origin:50% 100%;animation:rig-sway 3.6s ease-in-out infinite}
+.sail-main,.sail-secondary,.sail-detail,.sailboat-hull path{fill:#7c53f9}
+.sail-secondary{opacity:.9}
+.sailboat-hull{transform-box:fill-box;transform-origin:50% 0%;animation:hull-bob 3.6s ease-in-out infinite}
+.wind{
+  position:absolute;
+  right:26%;
+  width:90px;
+  height:2px;
+  z-index:1;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,#6c4cf1);
+  opacity:0;
+  animation:wind-pass 3.4s linear infinite;
+}
+.wind-one{top:22%}.wind-two{top:34%;animation-delay:1.1s}.wind-three{top:46%;animation-delay:2.2s}
+.water{position:absolute;left:-8%;right:-8%;bottom:9%;height:68px;overflow:hidden}
+.water span{
+  position:absolute;
+  left:-25%;
+  width:150%;
+  height:34px;
+  border-top:2px solid rgba(108,76,241,.22);
+  border-radius:50%;
+  animation:hero-wave 3.2s linear infinite;
+}
+.water span:nth-child(2){top:18px;opacity:.8;animation-duration:2.6s;animation-direction:reverse}
+.water span:nth-child(3){top:36px;opacity:.55;animation-duration:2.4s}
+@keyframes scene-drift{0%,100%{transform:translateY(-48%)}50%{transform:translateY(calc(-48% - 8px))}}
+@keyframes rig-sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.5deg)}}
+@keyframes hull-bob{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-3px) rotate(.7deg)}}
+@keyframes wind-pass{0%{transform:translateX(70px);opacity:0}20%{opacity:.45}80%{opacity:.35}100%{transform:translateX(-210px);opacity:0}}
+@keyframes hero-wave{from{transform:translateX(0)}to{transform:translateX(-9%)}}
 .specialty-label{
   margin-top:26px!important;
   color:var(--ink)!important;
@@ -230,10 +344,16 @@ footer{
 
 @media(max-width:900px){
   .brand-logo{width:245px}
+  .hero-horizon .hero-copy{width:min(72%,650px)}
+  .sailboat-scene{right:-7%;width:min(68%,600px)}
 }
 
 @media(max-width:620px){
   .brand-logo{width:215px}
+  .hero-horizon{min-height:680px;align-items:flex-start}
+  .hero-horizon .hero-copy{width:100%}
+  .hero-animation:after{background:linear-gradient(180deg,#f6f4fc 0%,#f6f4fc 52%,rgba(246,244,252,.8) 68%,rgba(246,244,252,.08) 100%)}
+  .sailboat-scene{top:auto;right:-2%;bottom:-7%;width:72%;transform:none;opacity:.72;animation:none}
   .specialty-list{grid-template-columns:1fr;font-size:16px}
   .profile-tagline{font-size:24px!important}
 }
@@ -249,4 +369,10 @@ footer{
   }
   .sun{opacity:.78}
   .water-line:after{display:none}
+  .sailboat-scene,
+  .sailboat-rig,
+  .sailboat-hull,
+  .wind,
+  .water span{animation:none}
+  .wind{display:none}
 }
