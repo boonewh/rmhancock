@@ -214,6 +214,8 @@ footer{
   border-radius:999px;
   background:linear-gradient(90deg,var(--sea),var(--bright));
 }
+.intro{padding-top:96px;padding-bottom:96px}
+.intro-copy{padding-top:18px}
 .service-grid dt{position:relative;padding-left:20px}
 .service-grid dt:before{
   content:"";
@@ -229,6 +231,69 @@ footer{
 .service-grid div:nth-child(3) dt:before{background:var(--coral)}
 .service-grid div:nth-child(4) dt:before{background:var(--sand)}
 .contact .secondary{background:var(--sea-soft);border-color:rgba(124,83,249,.18)}
+
+.online-care{
+  position:relative;
+  overflow:hidden;
+  padding:88px 0;
+  border-top:1px solid rgba(124,83,249,.16);
+  border-bottom:1px solid rgba(124,83,249,.16);
+  background:linear-gradient(112deg,var(--sea-soft),var(--cream));
+}
+.online-care:after{
+  content:"";
+  position:absolute;
+  right:-8%;
+  bottom:-80%;
+  width:430px;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(124,83,249,.14),rgba(53,186,199,.05) 52%,transparent 72%);
+}
+.online-care-inner{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:72px;
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 28px;
+  align-items:center;
+}
+.online-care-heading{order:2}
+.online-care-copy{order:1}
+.online-care h2{
+  max-width:14ch;
+  margin-top:18px;
+  font-size:clamp(44px,5vw,70px);
+}
+.online-care-copy{padding-top:28px}
+.online-care-copy>p:first-child{
+  max-width:46ch;
+  color:var(--ink-dark);
+  font-family:var(--serif);
+  font-size:clamp(21px,2.2vw,28px);
+  line-height:1.42;
+}
+.online-availability{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:28px;
+  color:var(--copy);
+  font-size:16px;
+}
+.online-availability span{
+  flex:none;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--bright);
+  box-shadow:0 0 0 5px rgba(53,186,199,.12);
+}
+.online-care .text-link{display:inline-block;margin-top:24px;color:var(--sea)}
+.online-care + .counselors{border-top:0}
 
 .brand-logo{flex:none;width:280px}
 .brand-logo img{display:block;width:100%;height:auto}
@@ -256,6 +321,7 @@ footer{
   width:min(61%,720px);
 }
 .hero-horizon .hero-lede{color:var(--ink-dark)}
+.hero-horizon .hero-actions{margin-top:26px}
 .hero-animation{
   position:absolute;
   inset:0;
@@ -289,7 +355,14 @@ footer{
   background:radial-gradient(closest-side,rgba(108,76,241,.17),transparent 72%);
   filter:blur(10px);
 }
-.sailboat{position:relative;width:100%;height:100%;overflow:visible}
+.sailboat{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  transform:scale(.92);
+  transform-origin:center;
+}
 .sailboat-rig{transform-box:fill-box;transform-origin:50% 100%;animation:rig-sway 3.6s ease-in-out infinite}
 .sail-main,.sail-secondary,.sail-detail,.sailboat-hull path{fill:#7c53f9}
 .sail-secondary{opacity:.9}
@@ -318,6 +391,21 @@ footer{
 }
 .water span:nth-child(2){top:18px;opacity:.8;animation-duration:2.6s;animation-direction:reverse}
 .water span:nth-child(3){top:36px;opacity:.55;animation-duration:2.4s}
+.hero-animation .boat-slogan{
+  position:absolute;
+  left:auto;
+  right:2%;
+  top:58%;
+  bottom:auto;
+  z-index:2;
+  width:24ch;
+  color:var(--ink-dark);
+  font-family:var(--serif);
+  font-size:clamp(18px,1.8vw,24px);
+  line-height:1.18;
+  text-align:center;
+}
+.hero-animation .boat-slogan em{color:var(--sea);font-style:italic}
 @keyframes scene-drift{0%,100%{transform:translateY(-48%)}50%{transform:translateY(calc(-48% - 8px))}}
 @keyframes rig-sway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.5deg)}}
 @keyframes hull-bob{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-3px) rotate(.7deg)}}
@@ -344,16 +432,28 @@ footer{
 
 @media(max-width:900px){
   .brand-logo{width:245px}
+  .online-care{padding:78px 0}
+  .online-care-inner{grid-template-columns:1fr;gap:36px}
+  .online-care-heading{order:1}
+  .online-care-copy{order:2}
+  .online-care-copy{padding-top:0}
   .hero-horizon .hero-copy{width:min(72%,650px)}
   .sailboat-scene{right:-7%;width:min(68%,600px)}
+  .hero-animation .boat-slogan{right:12%;width:22ch}
 }
 
 @media(max-width:620px){
   .brand-logo{width:215px}
+  .intro{padding-top:68px;padding-bottom:68px}
+  .online-care{padding:68px 0}
+  .online-care-inner{padding:0 20px;gap:28px}
+  .online-care-copy>p:first-child{font-size:22px}
   .hero-horizon{min-height:680px;align-items:flex-start}
   .hero-horizon .hero-copy{width:100%}
   .hero-animation:after{background:linear-gradient(180deg,#f6f4fc 0%,#f6f4fc 52%,rgba(246,244,252,.8) 68%,rgba(246,244,252,.08) 100%)}
-  .sailboat-scene{top:auto;right:-2%;bottom:-7%;width:72%;transform:none;opacity:.72;animation:none}
+  .sailboat-scene{top:auto;right:0;bottom:0;width:72%;transform:none;animation:none}
+  .sailboat,.water,.wind{opacity:.68}
+  .hero-animation .boat-slogan{right:0;top:57%;bottom:auto;width:100%;font-size:18px}
   .specialty-list{grid-template-columns:1fr;font-size:16px}
   .profile-tagline{font-size:24px!important}
 }
